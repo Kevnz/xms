@@ -1,0 +1,24 @@
+{
+  "name": "xms",
+  "version": "0.0.1",
+  "description": "CMS Module for Express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Kevnz/xms.git"
+  },
+  "keywords": [
+    "express",
+    "cms",
+    "content",
+    "content",
+    "management"
+  ],
+  "author": "Kevin Isom",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "d9394d7ee12a59da0888878ca31ec601e84bbba8"
+}
