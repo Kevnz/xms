@@ -20,5 +20,8 @@
   "author": "Kevin Isom",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "gitHead": "d9394d7ee12a59da0888878ca31ec601e84bbba8"
+  "gitHead": "d9394d7ee12a59da0888878ca31ec601e84bbba8",
+  "devDependencies": {
+    "express": "~3.4.4"
+  }
 }
