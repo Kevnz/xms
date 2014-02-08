@@ -1,0 +1,227 @@
+/* line 1, ../../sass/style.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 7, ../../sass/style.scss */
+a {
+  text-decoration: none;
+  color: #8e8ed6;
+}
+
+/* line 12, ../../sass/style.scss */
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* LAYOUT CSS */
+/* line 17, ../../sass/style.scss */
+#layout {
+  padding-left: 25%;
+  /* "left col (nav + list)" width */
+  position: relative;
+}
+
+/* line 22, ../../sass/style.scss */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 25%;
+  margin-left: -25%;
+  background: #18213d;
+  color: #fff;
+}
+
+/* line 32, ../../sass/style.scss */
+.header {
+  margin: 50% 2em 0;
+  text-align: right;
+}
+
+/* line 38, ../../sass/style.scss */
+.brand-title,
+.brand-tagline {
+  margin: 0;
+}
+
+/* line 41, ../../sass/style.scss */
+.brand-title {
+  text-transform: uppercase;
+}
+
+/* line 44, ../../sass/style.scss */
+.brand-tagline {
+  font-weight: 300;
+  color: #8e8ed6;
+}
+
+/* line 49, ../../sass/style.scss */
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 54, ../../sass/style.scss */
+.nav-item {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+/* line 59, ../../sass/style.scss */
+.nav-item a {
+  background: transparent;
+  border: 3px solid #6767b4;
+  color: #fff;
+  margin-top: 1em;
+}
+
+/* line 66, ../../sass/style.scss */
+.nav-item a:hover,
+.nav-item a:focus {
+  border: 3px solid #8e8ed6;
+  color: #8e8ed6;
+  text-decoration: none;
+}
+
+/* line 72, ../../sass/style.scss */
+.content-subhead {
+  text-transform: uppercase;
+  color: #aaa;
+  border-bottom: 1px solid #eee;
+  padding: 0.4em 0;
+  font-size: 80%;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+/* line 82, ../../sass/style.scss */
+.content {
+  padding: 2em 3em 0;
+}
+
+/* line 86, ../../sass/style.scss */
+.post {
+  padding-bottom: 2em;
+}
+
+/* line 89, ../../sass/style.scss */
+.post-title {
+  font-size: 2em;
+  color: #222;
+  margin-bottom: 0.2em;
+}
+
+/* line 94, ../../sass/style.scss */
+.post-avatar {
+  border-radius: 50px;
+  float: right;
+  margin-left: 1em;
+}
+
+/* line 99, ../../sass/style.scss */
+.post-description {
+  font-family: Georgia, "Cambria", serif;
+  color: #444;
+  line-height: 1.8em;
+}
+
+/* line 104, ../../sass/style.scss */
+.post-meta {
+  color: #999;
+  font-size: 90%;
+  margin: 0;
+}
+
+/* line 110, ../../sass/style.scss */
+.post-category {
+  margin: 0 0.1em;
+  padding: 0.3em 1em;
+  color: #fff;
+  background: #999;
+  font-size: 80%;
+}
+
+/* line 117, ../../sass/style.scss */
+.post-category-design {
+  background: #5aba59;
+}
+
+/* line 120, ../../sass/style.scss */
+.post-category-pure {
+  background: #4d85d1;
+}
+
+/* line 123, ../../sass/style.scss */
+.post-category-yui {
+  background: #8156a7;
+}
+
+/* line 126, ../../sass/style.scss */
+.post-category-js {
+  background: #df2d4f;
+}
+
+/* line 130, ../../sass/style.scss */
+.post-images {
+  margin: 1em 0;
+}
+
+/* line 133, ../../sass/style.scss */
+.post-image-meta {
+  margin-top: -3.5em;
+  margin-left: 1em;
+  color: #fff;
+  text-shadow: 0 1px 1px #333;
+}
+
+/* line 140, ../../sass/style.scss */
+.footer {
+  text-align: center;
+  padding: 1em 0;
+}
+
+/* line 144, ../../sass/style.scss */
+.footer a {
+  color: #ccc;
+  font-size: 80%;
+}
+
+/* line 149, ../../sass/style.scss */
+.footer .pure-menu a:hover,
+.footer .pure-menu a:focus {
+  background: none;
+}
+
+@media (max-width: 767px) {
+  /* line 154, ../../sass/style.scss */
+  .sidebar {
+    width: 100%;
+    position: relative;
+    margin: 0;
+  }
+
+  /* line 160, ../../sass/style.scss */
+  .header {
+    text-align: center;
+    top: auto;
+    margin: 3em auto;
+    position: static;
+  }
+
+  /* line 167, ../../sass/style.scss */
+  #layout {
+    padding: 0;
+  }
+}
+@media (max-width: 480px) {
+  /* line 173, ../../sass/style.scss */
+  .content {
+    padding: 2em 1em 0;
+  }
+}

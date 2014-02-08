@@ -4,7 +4,7 @@
   "description": "CMS Module for Express.js",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "node-dev test/manual/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,11 @@
   "readmeFilename": "README.md",
   "gitHead": "d9394d7ee12a59da0888878ca31ec601e84bbba8",
   "devDependencies": {
-    "express": "~3.4.4"
+    "express": "~3.4.4",
+    "express3-handlebars": "~0.5.0",
+    "express-state": "~1.1.1"
+  },
+  "dependencies": {
+    "mongojs": "~0.10.0"
   }
 }
