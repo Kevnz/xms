@@ -28,17 +28,19 @@ app.configure('development', function(){
 });
  
  
-app.get('/render', function(req, res){
-  res.render('index', { title: 'test' });
-});
+
+
+
 var xms = require('../../index');
 
+console.dir(xms);
 xms.extend(app);
- 
 
 
-
-
+app.get('/render', xms.handle, function(req, res, next){
+  res.render('index', { title: 'test' });
+  next();
+});
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port') + " in " + app.get('env') +" mode");
