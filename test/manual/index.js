@@ -27,9 +27,6 @@ app.configure('development', function(){
     app.locals.pretty = true;
 });
  
- 
-
-
 
 var xms = require('../../index');
 
@@ -38,6 +35,7 @@ xms.extend(app);
 
 
 app.get('/render', xms.handle, function(req, res, next){
+    console.dir(app);
   res.render('index', { title: 'test' });
   next();
 });
