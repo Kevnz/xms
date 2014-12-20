@@ -4,7 +4,8 @@
   "description": "CMS Module for Express.js",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/gulp build"
+    "start": "./node_modules/.bin/gulp build",
+    "test": "./node_modules/.bin/nodemon ./test/manual/index.js"
   },
   "repository": {
     "type": "git",
@@ -35,12 +36,20 @@
     "react": "^0.12.1",
     "react-treeview": "^0.3.11",
     "reactable": "^0.9.3",
+    "reactify": "^0.17.1",
     "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
     "bamboo": "^0.1.2",
     "bamboo-sync-ajax": "^0.2.0",
+    "body-parser": "^1.10.0",
+    "cloudinary": "^1.1.0",
+    "joi": "^5.0.2",
     "mongo-start": "~0.4.0",
+    "quill": "^0.19.8",
+    "react-quill": "0.0.3",
+    "string-template": "^0.2.0",
+    "superagent": "^0.21.0",
     "xtconf": "0.0.2"
   }
 }

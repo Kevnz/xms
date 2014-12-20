@@ -1,64 +1,58 @@
-var React     = require('react'),
-    immstruct = require('immstruct'),
-    component = require('omniscient');
-var Table = require('reactable').Table;
-var NameInput = component(function (props) {
-  var onChange = function (e) {
-    props.cursor.update('name', function (name) {
-      return e.currentTarget.value;
-    });
-  };
-  return React.DOM.input({ value: props.cursor.get('name'), onChange: onChange });
-});
+/** @jsx React.DOM */
 
-var PageListing = component(function (props) {
+var React = require('react');
+var TreeView = require('../admin/components/treeview');
+var format = require("string-template")
 
-  return React.DOM.tr({},
-      React.DOM.td({}, "t"),
-      React.DOM.td({}, "e"),
-      React.DOM.td({}, "s"),
-      React.DOM.td({}, "t")
-    );
-});
+var agent = require('superagent');
+var PAGES_URI = '/xms/api/pages';
+var PAGE_URI = '/xms/api/pages/{id}';
+var defPages = [{"_id":"549394dd0e22880de0000001","view":"index","content":"This is a test","title":"Test Title","createdOn":1418956973794,"createdBy":"kev_nz"},{"_id":"549395360e22880de0000002","view":"index","content":"Another Test","title":"Another Test Title","createdOn":1418958114420,"createdBy":"kev_nz"},{"_id":"54939de1972a76e2e8000001","view":"index","content":"A third","title":"Third Test Title","createdOn":1418960039157,"createdBy":"kev_nz"}];
 
-
-var OtherListing = component(function (props) {
-
-  return Table({  
-    className:'pure-table',
-    data:[
-        { name: 'Row one', content: 'These are regular data rows' },
-        { name: 'Row two', othercontent: 'They work like above' }
-    ]
-  })
-});
-
-
-
-var Pages = component(function (props) {
-
-  return OtherListing({});
-});
-
-
-var Welcome = component(function (props) {
-  var cursor = props.cursor;
-
-  var guest = cursor.get('guest');
-  var name = guest.get('name') ? ", " + guest.get('name') : "";
-  return React.DOM.section({},
-                           React.DOM.div({}, cursor.get('greeting'), name, "!"),
-                           React.DOM.div({}, NameInput(guest)));
-});
-var pages = [{title:'',}];
-var structure = immstruct({ greeting: 'Welcome', guest: { name: '' } });
-var el = document.getElementById('container');
-render();
-  structure.on('next-animation-frame', render);
-
-function render () {
-    React.render(Pages(structure.cursor()), el);
+    agent
+        .get(PAGES_URI)
+        .end(function(error, res){
+            console.log(error);
+            console.log(res);
+        });
+/*
+<TreeView
+              key={i}
+              nodeLabel={label}
+              collapsed={collapsedBookkeeping[i]}
+              onClick={this.handleClick.bind(null, i)}>
+                {node.map(function(entry) {
+                  return <div className="info" key={entry}>{entry}</div>;
+                })}
+            </TreeView>
+*/
+var treeData = {
+  title: "howdy",
+  childNodes: [
+    {title: "bobby"},
+    {title: "suzie", childNodes: [
+      {title: "puppy", childNodes: [
+        {title: "dog house"}
+      ]},
+      {title: "cherry tree"}
+    ]}
+  ]
 };
+/*
+var tree = component(function (props) {
+  return TreeView({node:treeData});
+}); 
+*/
+
+
+
+var PageList = require('../admin/components/pagelist');
+var el = document.getElementById('container');
+
+
+React.render(
+  <PageList data={defPages} />,el
+);
 
 
 
