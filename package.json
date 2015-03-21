@@ -1,6 +1,6 @@
 {
   "name": "xms",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "CMS Module for Express.js",
   "main": "index.js",
   "scripts": {
