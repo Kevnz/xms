@@ -3,16 +3,16 @@
 var gulp = require('gulp'),
   browserify = require('browserify'),
   source = require('vinyl-source-stream'),
-  es6ify = require('es6ify'),
-  reactify = require('reactify');
+  babelify = require('babelify');
 
  
  
 gulp.task('build', function () {
  
     return browserify({ entries:['./admin/app.js'], debug: true })
-      .transform(reactify)
-      .transform(es6ify)
+        .transform(babelify.configure({
+          experimental: false
+        })) 
 
         .bundle()
         .on('error', function (e) {
