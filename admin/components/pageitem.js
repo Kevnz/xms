@@ -1,10 +1,9 @@
-/** @jsx React.DOM */
-
 var React = require('react');
 var Quill = require('quill');
 
 
 
+var Page = require('../models/page');
 
 
 var PageItem;
@@ -29,13 +28,17 @@ module.exports = PageItem = React.createClass({
     },
     handleEditClick: function (event) {
         event.preventDefault();
-        console.log(event);
-        console.log(this);
+        
+        let title = this.refs.title.getDOMNode().value;
+        let content = editor.getHTML();
+        let view = this.refs.view.getDOMNode().value;
+        let route = this.refs.route.getDOMNode().value;
+        let deets = { title,content,view,route};
+        var nr = require('naive-request');
+        let response = nr.post('/xms/api/pages', deets);
 
-        var title = this.refs.title.getDOMNode().value;
-        var content = editor.getHTML();
-
-        console.log(content);
+        console.log(deets);
+        console.log(response);
     },
     handleCancelClick: function () {
         event.preventDefault();
@@ -49,6 +52,7 @@ module.exports = PageItem = React.createClass({
                 <legend>Edit Page Content</legend> 
                 <label>Title<input type="text" ref="title" defaultValue={this.props.page.title} /> </label>
                 <label>View<input type="text" ref="view" defaultValue={this.props.page.view} /> </label>
+                <label>Route<input type="text" ref="route" defaultValue={this.props.page.route} /> </label>
                 <div className="quill-wrapper">
   <div ref="toolbar" className="toolbar">
     <span className="ql-format-group">
@@ -167,7 +171,7 @@ module.exports = PageItem = React.createClass({
     </span>
   </div>
                 <div ref="editor" className="editor ql-container">
-                  <div>{this.props.page.content}</div>
+                  <div ref="content" >{this.props.page.content}</div>
                 </div>
                 </div>
                 <button type="submit" className="pure-button pure-button-primary" onClick={this.handleEditClick}>Save</button>
