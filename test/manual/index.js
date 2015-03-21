@@ -8,7 +8,6 @@ var express = require('express'),
 console.log(__dirname);
 expstate.extend(app);
 
- 
 app.set('port', process.env.PORT || 3125);
 app.set('views', __dirname + '/views'); 
 app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir:__dirname + '/views/layouts'}));
