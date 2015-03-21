@@ -1,8 +1,6 @@
-/** @jsx React.DOM */
-
 var React = require('react');
 var Quill = require('quill');
-
+var Page = require('../models/page');
 
 
 
@@ -14,6 +12,7 @@ module.exports = PageItem = React.createClass({
         return {editMode: false};
     },
     handleClick: function(event) {
+        console.log('handle the click');
         this.setState({editMode: !this.state.editMode});
     },
     componentDidUpdate: function () {
@@ -48,6 +47,7 @@ module.exports = PageItem = React.createClass({
                 <legend>Edit Page Content</legend> 
                 <label>Title<input type="text" ref="title" defaultValue={this.props.page.title} /> </label>
                 <label>View<input type="text" ref="view" defaultValue={this.props.page.view} /> </label>
+                <label>Route<input type="text" ref="route" defaultValue={this.props.page.route} /> </label>
                 <div className="quill-wrapper">
                     <div ref="toolbar" className="toolbar">
                         <span className="ql-format-group">

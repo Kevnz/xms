@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react'); 
 var Nav;
 module.exports = Nav = React.createClass({
