@@ -4,8 +4,9 @@
   "description": "CMS Module for Express.js",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/gulp build",
-    "test": "./node_modules/.bin/nodemon ./test/manual/index.js"
+    "start": "gulp build",
+    "test": "node-dev ./test/manual/index.js",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "readmeFilename": "README.md",
   "gitHead": "d9394d7ee12a59da0888878ca31ec601e84bbba8",
   "devDependencies": {
+    "babelify": "^5.0.4",
     "browserify": "^7.0.0",
     "es6ify": "^1.5.1",
     "express": "^4.10.5",
@@ -32,6 +34,7 @@
     "gulp": "^3.8.10",
     "gulp-browserify": "^0.5.0",
     "immstruct": "^1.2.0",
+    "node-dev": "^2.6.1",
     "nodemon": "^1.2.1",
     "omniscient": "^2.1.0",
     "react": "^0.12.1",
@@ -42,12 +45,14 @@
   },
   "dependencies": {
     "bamboo": "^0.1.2",
-    "bamboo-sync-ajax": "^0.2.0",
-    "body-parser": "^1.10.0",
-    "cloudinary": "^1.1.0",
-    "joi": "^5.0.2",
-    "mongo-start": "~0.4.0",
-    "quill": "^0.19.8",
+    "bamboo-sync-ajax": "^0.2.1",
+    "body-parser": "^1.12.2",
+    "cloudinary": "^1.1.2",
+    "express-cors": "0.0.3",
+    "joi": "^5.1.0",
+    "mongo-start": "^1.0.0",
+    "naive-request": "^1.0.3",
+    "quill": "^0.19.10",
     "react-quill": "0.0.3",
     "string-template": "^0.2.0",
     "superagent": "^0.21.0",
