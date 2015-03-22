@@ -20,8 +20,8 @@ class PageStore {
         });
     }
     onPageSelected (page) {
-        console.log('page')
-        return page;
+        console.log('page');
+        this.selectedPage = page;
     }
 }
 
