@@ -1,0 +1,96 @@
+.page-count {
+    color: rgb(75, 113, 151);
+}
+
+.page-label-personal,
+.page-label-work,
+.page-label-travel {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 0.5em;
+    border-radius: 3px;
+}
+.page-label-personal {
+    background: #ffc94c;
+}
+.page-label-work {
+    background: #41ccb4;
+}
+.page-label-travel {
+    background: #40c365;
+}
+
+
+/* Page Item Styles */
+.page-item {
+    inherit:.pure-g;
+    padding: 0.9em 1em;
+    border-bottom: 1px solid #ddd;
+    border-left: 6px solid transparent;
+}
+.editor-avatar {
+    border-radius: 3px;
+    margin-right: 0.5em;
+}
+.page-name,
+.page-subject {
+    margin: 0;
+}
+.page-name {
+    text-transform: uppercase;
+    color: #999;
+}
+.page-desc {
+    font-size: 80%;
+    margin: 0.4em 0;
+}
+
+.page-item-selected {
+    background: #eee;
+}
+.page-item-unread {
+    border-left: 6px solid #1b98f8;
+}
+
+/* Page Content Styles */
+.page-content-header, .page-content-body, .page-content-footer {
+    padding: 1em 2em;
+}
+.page-content-header {
+    inherit:.pure-g;
+    border-bottom: 1px solid #ddd;
+}
+
+.page-content-title {
+    margin: 0.5em 0 0;
+}
+.page-content-subtitle {
+    font-size: 1em;
+    margin: 0;
+    font-weight: normal;
+}
+.page-content-subtitle span {
+    color: #999;
+}
+.page-content-controls {
+    inherit: .pure-u-1-2;
+    margin-top: 2em;
+    text-align: right;
+}
+.page-content-controls .secondary-button {
+    margin-bottom: 0.3em;
+}
+
+.editor-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+
+.page-item-details {
+    inherit:.pure-u-3-4;
+}
+.page-content-header-wrapper {
+    inherit:.pure-u-1-2;
+}
