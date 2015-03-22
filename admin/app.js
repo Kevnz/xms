@@ -4,10 +4,14 @@ var format = require("string-template")
 var AdminApp = require('../admin/components/admin-app');
 var el = document.getElementById('container');
 
-var nr = require('naive-request');
-var defPages = nr.get('/xms/api/pages');
+
+
+var api = require('./utils/api');
+
+api.getAllPages();
+
 React.render(
-  <AdminApp data={defPages} />, el
+  <AdminApp />, el
 );
 
 

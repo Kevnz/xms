@@ -12,8 +12,8 @@ export default class AdminApp extends React.Component {
         return (
             <div className="app">
                 <Menu></Menu>
-                <List data={this.props.data}></List>
-                <Main page={this.props.data[0]}></Main>
+                <List  ></List>
+                <Main  ></Main>
             </div>
         );
     }
