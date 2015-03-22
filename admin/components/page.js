@@ -1,15 +1,23 @@
 import React from 'react';
+import ActionCreators from '../actions/action-creators';
+
 
 export default class Page extends React.Component {
     constructor(props) {
         super(props);
     }
-
+    selectPage(e) {
+        console.log('select ' +this.props.page);
+        this.setState({isSelected:true});
+        ActionCreators.pageSelected(this.props.page);
+    }
     render() {
         let unknown = 'Unknown';
         let nodesc ='No Description was give, not cool';
+        var selected = this.props.isSelected || false;
+        var selectedClass = selected ? 'page-item page-item-unread' : 'page-item '
         return (
-        <div className="page-item page-item-unread">
+        <div className={selectedClass} onClick={this.selectPage.bind(this)} key={this.props.page._id}>
             <div className="pure-u">
                 <span className="avatar-unknown"></span>
                 

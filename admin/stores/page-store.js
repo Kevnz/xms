@@ -5,6 +5,7 @@ class PageStore {
     constructor() {
         this.bindActions(ActionCreators);
         this.pages = [];
+        this.onPageSelected = null;
     }
     onReceivePages (pages) {
         console.log(pages);
@@ -17,6 +18,10 @@ class PageStore {
         this.pages = this.pages.filter((item) => {
             return item._id !== page._id;
         });
+    }
+    onPageSelected (page) {
+        console.log('page')
+        return page;
     }
 }
 
