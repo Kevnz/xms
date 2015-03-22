@@ -1,0 +1,10 @@
+.margin-10 {
+    margin: 10px;
+}
+.margin-r-10 {
+    margin-right: 10px;
+}
+.zero {
+    margin:0;
+    padding:0;
+}
