@@ -128,7 +128,9 @@ a {
 .avatar-unknown {
     inherit: .fa;
     inherit: .fa-user;
-    inherit: .fa-4x;
+    inherit: .fa-3x;
+    padding:5px;
+    margin:10px;
 }
 @import "./modules/list";
 @import "./modules/pages";
