@@ -1,16 +1,13 @@
 var React = require('react'); 
 var format = require("string-template")
 
-var PageList = require('../admin/components/pagelist');
+var AdminApp = require('../admin/components/admin-app');
 var el = document.getElementById('container');
-var defPages = [{ title: 'First',
-              view: 'index',
-              description:'the description',
-        content:'here',
-        route:'/'}]
 
+var nr = require('naive-request');
+var defPages = nr.get('/xms/api/pages');
 React.render(
-  <PageList data={defPages} />,el
+  <AdminApp data={defPages} />, el
 );
 
 
