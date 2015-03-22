@@ -7,7 +7,7 @@ export default class List extends React.Component {
     }
 
     render() {
-        var pageNodes = this.props.data.map(function (page) {
+        var pageNodes = this.props.pages.map(function (page) {
             return (
                 <PageItem page={page}>
                 </PageItem>

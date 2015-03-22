@@ -13,8 +13,7 @@ export default class Page extends React.Component {
                 <div className="page-content">
                     <div className="page-content-header ">
                         <div className="page-content-header-wrapper">
-                            <h1 className="page-content-title">{this.props.page.title}</h1>
-                            <p className="page-content-subtitle">
+                            <h1 className="page-content-title"> {this.props.page.title}</h1>                            <p className="page-content-subtitle">
                                 From  Someone at <span>SomeTime</span>
                             </p>
                         </div>
@@ -34,3 +33,5 @@ export default class Page extends React.Component {
         );
     }
 }
+
+Page.defaultProps = { page: {title:'', content:''}}

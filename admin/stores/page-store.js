@@ -6,7 +6,8 @@ class PageStore {
         this.bindActions(ActionCreators);
         this.pages = [];
     }
-    onRecievedPages (pages) {
+    onReceivePages (pages) {
+        console.log(pages);
         this.pages = pages;
     }
     onAddPage (page) {
@@ -18,3 +19,5 @@ class PageStore {
         });
     }
 }
+
+module.exports = alt.createStore(PageStore);
