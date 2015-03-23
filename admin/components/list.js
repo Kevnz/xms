@@ -7,8 +7,11 @@ export default class List extends React.Component {
     }
 
     render() {
+        console.log(PageItem);
         var pageNodes = this.props.pages.map( (page) => {
-            let isSelected = this.props.selectedPage._id === page._id;
+            console.log(this.props.selectedPage);
+            let isSelected = this.props.selectedPage === page._id;
+            console.log('this is selected ?' + isSelected);
             return (
                 <PageItem page={page} isSelected={isSelected} selectedPage={this.props.selectedPage}>
                 </PageItem>

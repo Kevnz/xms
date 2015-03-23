@@ -68,6 +68,7 @@
     "pure-extras": "^1.0.0",
     "purecss": "^0.6.0",
     "quill": "^0.19.10",
+    "react-mixin": "^1.0.3",
     "react-quill": "0.0.3",
     "string-template": "^0.2.0",
     "superagent": "^1.1.0",

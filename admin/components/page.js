@@ -1,6 +1,11 @@
 import React from 'react';
 import ActionCreators from '../actions/action-creators';
-
+import ListenerMixin from 'alt/mixins/ListenerMixin'
+import mixin from 'react-mixin';
+import PageStore from '../stores/page-store';
+function getStateFromStores(key) {
+    return {isSelected: PageStore.getState().selectedPage === key};
+}
 
 export default class Page extends React.Component {
     constructor(props) {
@@ -10,6 +15,13 @@ export default class Page extends React.Component {
         console.log('select ' +this.props.page);
         this.setState({isSelected:true});
         ActionCreators.pageSelected(this.props.page);
+    }
+    componentDidMount () { 
+        this.listenTo(PageStore, this._onChange.bind(this));
+    } 
+    _onChange () {
+
+        this.setState(getStateFromStores(this.props.page._id));
     }
     render() {
         let unknown = 'Unknown';
@@ -39,4 +51,7 @@ export default class Page extends React.Component {
     }
 }
 Page.defaultProps = { isSelected: false}
+
+
+mixin(Page.prototype, ListenerMixin);
 //<img className="editor-avatar" alt="editor avatar" height="64" width="64" src="" />
