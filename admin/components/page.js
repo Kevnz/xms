@@ -14,8 +14,12 @@ export default class Page extends React.Component {
     render() {
         let unknown = 'Unknown';
         let nodesc ='No Description was give, not cool';
-        var selected = this.props.isSelected || false;
-        var selectedClass = selected ? 'page-item page-item-unread' : 'page-item '
+        var selected = this.props.isSelected ;
+        if (this.state && this.state.isSelected) {
+            selected = true;
+        }
+        
+        var selectedClass = selected ? 'page-item page-item-unread' : 'page-item bucket-of-nope'
         return (
         <div className={selectedClass} onClick={this.selectPage.bind(this)} key={this.props.page._id}>
             <div className="pure-u">
@@ -34,5 +38,5 @@ export default class Page extends React.Component {
         );
     }
 }
-
+Page.defaultProps = { isSelected: false}
 //<img className="editor-avatar" alt="editor avatar" height="64" width="64" src="" />

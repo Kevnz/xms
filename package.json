@@ -1,12 +1,12 @@
 {
   "name": "xms",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "CMS Module for Express.js",
   "main": "index.js",
   "scripts": {
     "start": "gulp build",
     "test": "node-dev ./test/manual/index.js",
-    "build": "gulp build",
+    "build": "gulp watch",
     "css": "gulp buildcss"
   },
   "repository": {
@@ -63,6 +63,8 @@
     "joi": "^5.1.0",
     "mongo-start": "^1.0.0",
     "naive-request": "^1.0.3",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
     "pure-extras": "^1.0.0",
     "purecss": "^0.6.0",
     "quill": "^0.19.10",

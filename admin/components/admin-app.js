@@ -26,10 +26,11 @@ export default class AdminApp extends React.Component {
         PageStore.unlisten(this._onChange.bind(this));
     }
     render() {
+        var selectedPage = this.state.selectedPage ? this.state.selectedPage._id : ''
         return (
             <div className="app">
                 <Menu></Menu>
-                <List pages={this.state.pages}></List>
+                <List pages={this.state.pages} selectedPage={selectedPage} ></List>
                 <Main page={this.state.selectedPage} ></Main>
             </div>
         );
