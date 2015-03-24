@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu from './menu';
 import ContentEditable from 'react-wysiwyg';
-
+import { If, Then, Else } from 'react-if'
 export default class Page extends React.Component {
     constructor(props) {
         super(props);
@@ -40,19 +40,39 @@ export default class Page extends React.Component {
                     </div>
 
                     <div className="page-content-body" >
-        <ContentEditable
-          tagName='div'
-          className='name-field'
-          onChange={this.onChange.bind(this)}
-          text={this.props.page.content}
-          placeholder='Your Content'
-          autofocus={true}
-          maxLength={1000}
-          editing={editMode}
-        />
-        <button className="primary-button" onClick={this.enableEditing.bind(this)}>
-          Enable Editing
-        </button>
+                        <ContentEditable
+                          tagName='div'
+                          className='name-field'
+                          onChange={this.onChange.bind(this)}
+                          text={this.props.page.content}
+                          placeholder='Your Content'
+                          autofocus={true}
+                          maxLength={1000}
+                          editing={editMode}
+                        />
+                        <If condition={editMode} >
+                            <Then>
+                                <button className="primary-button" >
+                                    Save
+                                </button>
+                                <button className="primary-button" >
+                                    Publish
+                                </button>
+                                <button className="primary-button" >
+                                    Cancel
+                                </button>
+                                <button className="primary-button" >
+                                    Delete
+                                </button>   
+                            </Then>
+                            <Else>
+                                <button className="primary-button" onClick={this.enableEditing.bind(this)}>
+                                Enable Editing
+                                </button>
+                            </Else>
+                        </If>
+
+
                     </div>
                 </div>
             </div>
