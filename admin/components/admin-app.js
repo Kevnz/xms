@@ -4,6 +4,7 @@ import List from './list';
 import Main from './main';
 import PageStore from '../stores/page-store';
 import SettingsStore from '../stores/settings-store';
+
 function _getStateFromStores () {
     console.log('_getStateFromStores');
     console.log(PageStore);

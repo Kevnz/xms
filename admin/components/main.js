@@ -1,13 +1,27 @@
 import React from 'react';
 import Menu from './menu';
+import ContentEditable from 'react-wysiwyg';
 
 export default class Page extends React.Component {
     constructor(props) {
         super(props);
     }
+    onChange(text) {
+    // in order to render the updated text,
+    // you need to pass it as a prop to contentEditable.
+    // This gives you increased flexibility.
+        this.setState({ text: text });
+    }
 
+    enableEditing() {
+    // set your contenteditable field into editing mode.
+        this.setState({ editing: true });
+    }
     render() {
- 
+         var editMode = this.props.editing ;
+        if (this.state && this.state.editing) {
+            editMode = true;
+        }
         return (
             <div className="main">
                 <div className="page-content">
@@ -25,8 +39,20 @@ export default class Page extends React.Component {
                         </div>
                     </div>
 
-                    <div className="page-content-body" dangerouslySetInnerHTML={{__html: this.props.page.content}}>
-
+                    <div className="page-content-body" >
+        <ContentEditable
+          tagName='div'
+          className='name-field'
+          onChange={this.onChange.bind(this)}
+          text={this.props.page.content}
+          placeholder='Your Content'
+          autofocus={true}
+          maxLength={1000}
+          editing={editMode}
+        />
+        <button className="primary-button" onClick={this.enableEditing.bind(this)}>
+          Enable Editing
+        </button>
                     </div>
                 </div>
             </div>
@@ -34,4 +60,4 @@ export default class Page extends React.Component {
     }
 }
 
-Page.defaultProps = { page: {title:'', content:''}}
+Page.defaultProps = { page: {title:'', content:'', editing: false}}
