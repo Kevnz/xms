@@ -1,10 +1,16 @@
 import React from 'react';
 import Menu from './menu';
 import ContentEditable from 'react-wysiwyg';
-import { If, Then, Else } from 'react-if'
-export default class Page extends React.Component {
+
+class Main extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props);
+        this.state= {page:{title:props.title, content:props.content }, editing: props.editing};
+        console.log(this.state);
+        this.enableEditing = this.enableEditing.bind(this);        
+        this.onChange = this.onChange.bind(this);
+        this.renderControls = this.renderControls.bind(this);
     }
     onChange(text) {
     // in order to render the updated text,
@@ -17,11 +23,31 @@ export default class Page extends React.Component {
     // set your contenteditable field into editing mode.
         this.setState({ editing: true });
     }
+    renderControls() {
+
+        return (!this.state.editing) 
+            ?   <div className="primary-button" onClick={this.enableEditing}>
+                    Enable Editing
+                </div>
+            :
+                <div className="actions">
+                    <div className="primary-button" >
+                        Save
+                    </div>
+                    <div className="primary-button" >
+                        Publish
+                    </div>
+                    <div className="primary-button" >
+                        Cancel
+                    </div>
+                    <div className="primary-button" >
+                        Delete
+                    </div>
+                </div>;
+ 
+
+    }
     render() {
-         var editMode = this.props.editing ;
-        if (this.state && this.state.editing) {
-            editMode = true;
-        }
         return (
             <div className="main">
                 <div className="page-content">
@@ -43,35 +69,16 @@ export default class Page extends React.Component {
                         <ContentEditable
                           tagName='div'
                           className='name-field'
-                          onChange={this.onChange.bind(this)}
+                          onChange={this.onChange}
                           text={this.props.page.content}
                           placeholder='Your Content'
                           autofocus={true}
                           maxLength={1000}
-                          editing={editMode}
+                          editing={this.state.editing}
                         />
-                        <If condition={editMode} >
-                            <Then>
-                                <button className="primary-button" >
-                                    Save
-                                </button>
-                                <button className="primary-button" >
-                                    Publish
-                                </button>
-                                <button className="primary-button" >
-                                    Cancel
-                                </button>
-                                <button className="primary-button" >
-                                    Delete
-                                </button>   
-                            </Then>
-                            <Else>
-                                <button className="primary-button" onClick={this.enableEditing.bind(this)}>
-                                Enable Editing
-                                </button>
-                            </Else>
-                        </If>
 
+                        {this.renderControls()}
+ 
 
                     </div>
                 </div>
@@ -80,4 +87,5 @@ export default class Page extends React.Component {
     }
 }
 
-Page.defaultProps = { page: {title:'', content:'', editing: false}}
+Main.defaultProps = { page: {title:'', content:''}, editing: false}
+export default Main;

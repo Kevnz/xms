@@ -13,7 +13,6 @@ function _getStateFromStores () {
     return returnState;
 }
 
-
 export default class AdminApp extends React.Component {
     constructor(props) {
         super(props);
