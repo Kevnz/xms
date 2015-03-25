@@ -795,8 +795,10 @@ this the same font stack that Normalize.css sets for the `body`.
 .pure-button,
 .primary-button,
 .secondary-button,
+.warning-button,
 .compose-button,
 .compose-button,
+.warning-button,
 .edit-button {
   /* Structure */
   display: inline-block;
@@ -819,8 +821,10 @@ this the same font stack that Normalize.css sets for the `body`.
 .pure-button::-moz-focus-inner,
 .primary-button::-moz-focus-inner,
 .secondary-button::-moz-focus-inner,
+.warning-button::-moz-focus-inner,
 .compose-button::-moz-focus-inner,
 .compose-button::-moz-focus-inner,
+.warning-button::-moz-focus-inner,
 .edit-button::-moz-focus-inner {
   padding: 0;
   border: 0;
@@ -831,8 +835,10 @@ this the same font stack that Normalize.css sets for the `body`.
 .pure-button,
 .primary-button,
 .secondary-button,
+.warning-button,
 .compose-button,
 .compose-button,
+.warning-button,
 .edit-button {
   font-family: inherit;
   font-size: 100%;
@@ -855,12 +861,16 @@ this the same font stack that Normalize.css sets for the `body`.
 .pure-button:focus,
 .primary-button:hover,
 .secondary-button:hover,
+.warning-button:hover,
 .primary-button:focus,
 .secondary-button:focus,
+.warning-button:focus,
 .compose-button:hover,
 .compose-button:focus,
 .compose-button:hover,
 .compose-button:focus,
+.warning-button:hover,
+.warning-button:focus,
 .edit-button:hover,
 .edit-button:focus {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
@@ -870,8 +880,10 @@ this the same font stack that Normalize.css sets for the `body`.
 .pure-button:focus,
 .primary-button:focus,
 .secondary-button:focus,
+.warning-button:focus,
 .compose-button:focus,
 .compose-button:focus,
+.warning-button:focus,
 .edit-button:focus {
   outline: 0;
 }
@@ -880,8 +892,10 @@ this the same font stack that Normalize.css sets for the `body`.
 .pure-button:active,
 .primary-button:active,
 .secondary-button:active,
+.warning-button:active,
 .compose-button:active,
 .compose-button:active,
+.warning-button:active,
 .edit-button:active {
   box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
   border-color: #000\9;
@@ -912,8 +926,10 @@ this the same font stack that Normalize.css sets for the `body`.
 .pure-button::-moz-focus-inner,
 .primary-button::-moz-focus-inner,
 .secondary-button::-moz-focus-inner,
+.warning-button::-moz-focus-inner,
 .compose-button::-moz-focus-inner,
 .compose-button::-moz-focus-inner,
+.warning-button::-moz-focus-inner,
 .edit-button::-moz-focus-inner {
   padding: 0;
   border: 0;
@@ -1909,7 +1925,8 @@ striping:
   color: white;
 }
 
-.pure-button-warning {
+.pure-button-warning,
+.warning-button {
   background: rgb(255, 163, 0);
   color: white;
 }
@@ -4292,6 +4309,7 @@ striping:
 
 .primary-button,
 .secondary-button,
+.warning-button,
 .compose-button {
   box-shadow: none;
   border-radius: 20px;
@@ -4317,6 +4335,10 @@ striping:
   top: 0.5em;
   right: 0.5em;
   position: absolute;
+}
+
+.warning-button {
+  margin: 1em 0;
 }
 
 body {

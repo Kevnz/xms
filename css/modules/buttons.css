@@ -1,5 +1,6 @@
 .primary-button,
-.secondary-button {
+.secondary-button,
+.warning-button {
     inherit: .pure-button;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -27,4 +28,9 @@
 .compose-button {
     inherit: .pure-button;
     inherit: .primary-button;
+}
+.warning-button {
+    inherit:.pure-button;
+    inherit:.pure-button-warning;
+    margin: 1em 0;
 }

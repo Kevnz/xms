@@ -31,17 +31,8 @@ class Main extends React.Component {
                 </div>
             :
                 <div className="actions">
-                    <div className="primary-button" >
-                        Save
-                    </div>
-                    <div className="primary-button" >
-                        Publish
-                    </div>
-                    <div className="primary-button" >
-                        Cancel
-                    </div>
-                    <div className="primary-button" >
-                        Delete
+                    <div className="warning-button" >
+                        Cancel Edit
                     </div>
                 </div>;
  
