@@ -5,7 +5,6 @@ class PageStore {
     constructor() {
         this.bindActions(ActionCreators);
         this.pages = [];
-        this.onPageSelected = null;
     }
     onReceivePages (pages) {
         console.log(pages);
