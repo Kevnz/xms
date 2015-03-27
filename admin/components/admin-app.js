@@ -7,8 +7,10 @@ import SettingsStore from '../stores/settings-store';
 
 function _getStateFromStores () {
     console.log('_getStateFromStores');
-    console.log(PageStore);
-    var returnState = PageStore.getState();
+    var returnState = {
+        pages: PageStore.getState(),
+        settings:SettingsStore.getState()
+    };
     console.log(returnState);
     return returnState;
 }
@@ -18,7 +20,6 @@ export default class AdminApp extends React.Component {
         super(props);
         this.state = _getStateFromStores();
     }
-     
     componentDidMount () {
         PageStore.listen(this._onChange.bind(this));
     }
@@ -26,12 +27,12 @@ export default class AdminApp extends React.Component {
         PageStore.unlisten(this._onChange.bind(this));
     }
     render() {
-        var selectedPage = this.state.selectedPage ? this.state.selectedPage._id : ''
+        var selectedPage = this.state.pages.selectedPage ? this.state.pages.selectedPage._id : ''
         return (
             <div className="app">
                 <Menu></Menu>
-                <List pages={this.state.pages} selectedPage={selectedPage} ></List>
-                <Main page={this.state.selectedPage} ></Main>
+                <List pages={this.state.pages.pages} selectedPage={selectedPage} ></List>
+                <Main page={this.state.pages.selectedPage} ></Main>
             </div>
         );
     }
