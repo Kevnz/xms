@@ -9,7 +9,7 @@ var el = document.getElementById('container');
 var api = require('./utils/api');
 
 api.getAllPages();
-
+api.getAllSettings();
 React.render(
   <AdminApp />, el
 );
