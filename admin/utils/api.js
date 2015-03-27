@@ -10,4 +10,11 @@ export default {
                 ActionCreators.receivePages(res.body);
             })
     }
+    getAllSettings() {
+        request.get('/xms/api/settings')
+            .end((err, res) => { 
+                console.log(res);
+                ActionCreators.receiveSettings(res.body);
+            })
+    }
 }
