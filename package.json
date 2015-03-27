@@ -63,6 +63,7 @@
     "cloudinary": "^1.1.2",
     "express-cors": "0.0.3",
     "joi": "^5.1.0",
+    "mongo-loader": "^1.0.0",
     "mongo-start": "^1.0.0",
     "naive-request": "^1.0.3",
     "passport": "^0.2.1",
