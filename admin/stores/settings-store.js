@@ -10,9 +10,6 @@ class SettingsStore {
         console.log(settings);
         this.settings = settings;
     }
-    onAddPage (page) {
-        this.pages.push(page);
-    }
 }
 
 module.exports = alt.createStore(SettingsStore);
