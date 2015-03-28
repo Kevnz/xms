@@ -1,0 +1,6 @@
+[
+    {"name": "Published"},
+    {"name": "Queue"},
+    {"name": "Draft"},
+    {"name": "Deleted"}
+]
