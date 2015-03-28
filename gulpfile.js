@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
   browserify = require('browserify'),
+  exorcist = require('exorcist'),
   source = require('vinyl-source-stream'),
   babelify = require('babelify'),
   rework = require('gulp-rework'),
@@ -57,13 +58,16 @@ gulp.task('buildcss', function () {
 });
  
 gulp.task('buildjs', function () {
- 
+    var path =require('path');
+    var mapFile = path.join(__dirname, '/templates/js/app.js.map');
+    console.log(mapFile)
     return browserify({ entries:['./admin/app.js'], debug: true })
         .transform(babelify.configure({
           experimental: false
         })) 
 
         .bundle()
+        .pipe(exorcist(mapFile))
         .on('error', function (e) {
             console.log('browserify error');
             console.log(arguments);
