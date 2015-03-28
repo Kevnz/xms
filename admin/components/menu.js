@@ -1,11 +1,31 @@
 import React from 'react';
+import ListenerMixin from 'alt/mixins/ListenerMixin'
+import mixin from 'react-mixin';
+import SettingsStore from '../stores/settings-store';
 
-export default class Menu extends React.Component {
+function getStateFromStores() {
+    return {settings: SettingsStore.getState()};
+}
+
+class Menu extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {settings: props.settings};
+        console.log('menu state', this.state);       
+        //this.onChange = this.onChange.bind(this);
     }
+    componentDidMount () { 
+        this.listenTo(SettingsStore, this._onChange.bind(this));
+    } 
+    _onChange () {
 
+        this.setState(getStateFromStores().settings);
+    }
     render() {
+        console.log('menu state',this.state.settings);
+        let settingNodes = this.state.settings.map((setting) => {
+            return (<li className="menu-item"><a href="#" className="menu-link">{setting.name}</a></li>)
+        })
         return (
             <div className="menu">
                 <a href="#" className="menu-button">Menu</a>
@@ -15,15 +35,11 @@ export default class Menu extends React.Component {
 
                     <div className="inner-menu">
                         <ul className="menu-list">
-                            <li className="menu-item"><a href="#" className="menu-link">Inbox <span className="email-count">(2)</span></a></li>
-                            <li className="menu-item"><a href="#" className="menu-link">Important</a></li>
-                            <li className="menu-item"><a href="#" className="menu-link">Sent</a></li>
-                            <li className="menu-item"><a href="#" className="menu-link">Drafts</a></li>
-                            <li className="menu-item"><a href="#" className="menu-link">Trash</a></li>
+                            {settingNodes}
                             <li className="menu-heading">Labels</li>
-                            <li className="menu-item"><a href="#" className="menu-link"><span className="email-label-personal"></span>Personal</a></li>
-                            <li className="menu-item"><a href="#" className="menu-link"><span className="email-label-work"></span>Work</a></li>
-                            <li className="menu-item"><a href="#" className="menu-link"><span className="email-label-travel"></span>Travel</a></li>
+                            <li className="menu-item"><a href="#" className="menu-link"><span className="page-label-personal"></span>Personal</a></li>
+                            <li className="menu-item"><a href="#" className="menu-link"><span className="page-label-work"></span>Work</a></li>
+                            <li className="menu-item"><a href="#" className="menu-link"><span className="page-label-travel"></span>Travel</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,3 +47,11 @@ export default class Menu extends React.Component {
         );
     }
 }
+
+Menu.defaultProps = { settings: [{name:''}]}
+
+
+mixin(Menu.prototype, ListenerMixin);
+
+
+export default Menu;
