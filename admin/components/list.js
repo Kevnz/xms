@@ -1,5 +1,5 @@
 import React from 'react';
-import PageItem from './page';
+import PageItem from './page-item';
 
 export default class List extends React.Component {
     constructor(props) {
