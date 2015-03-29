@@ -2,6 +2,7 @@ import React from 'react';
 import ListenerMixin from 'alt/mixins/ListenerMixin'
 import mixin from 'react-mixin';
 import SettingsStore from '../stores/settings-store';
+import MenuItem from './menu-item';
 
 function getStateFromStores() {
     return {settings: SettingsStore.getState()};
@@ -21,10 +22,17 @@ class Menu extends React.Component {
 
         this.setState(getStateFromStores().settings);
     }
+    onSelect () {
+        
+    }
+    onMenuClick (e) {
+
+    }
     render() {
         console.log('menu state',this.state.settings);
+        let self = this;
         let settingNodes = this.state.settings.map((setting) => {
-            return (<li className="menu-item"><a href="#" className="menu-link">{setting.name}</a></li>)
+            return (<MenuItem setting={setting}></MenuItem>)
         })
         return (
             <div className="menu">
