@@ -56,7 +56,7 @@ gulp.task('buildcss', function () {
         }))
         .pipe(gulp.dest('templates/css/'));
 });
- 
+
 gulp.task('buildjs', function () {
     var path =require('path');
     var mapFile = path.join(__dirname, '/templates/js/app.js.map');
