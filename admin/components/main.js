@@ -1,12 +1,13 @@
 import React from 'react';
 import Menu from './menu';
 import ContentEditable from 'react-wysiwyg';
+import daylight from 'daylight';
 
 class Main extends React.Component {
     constructor(props) {
         super(props);
         console.log(props);
-        this.state= {page:{title:props.title, content:props.content }, editing: props.editing};
+        this.state= { page:{title:props.title, content:props.content }, editing: props.editing};
         console.log(this.state);
         this.enableEditing = this.enableEditing.bind(this);        
         this.onChange = this.onChange.bind(this);
@@ -38,6 +39,11 @@ class Main extends React.Component {
  
 
     }
+    formatDate(){
+        if (this.props.page.createdOn) {
+            return (daylight('l, F jS Y h:i A',this.props.page.createdOn))
+        } else { return "";}
+    }
     render() {
         return (
             <div className="main">
@@ -46,7 +52,7 @@ class Main extends React.Component {
                         <div className="page-content-header-wrapper">
                             <h1 className="page-content-title"> {this.props.page.title}</h1>                            
                             <p className="page-content-subtitle">
-                                From  <a href="">{this.props.page.createdBy}</a> at <span>{this.props.page.createdOn}</span>
+                                From  <a href="">{this.props.page.createdBy}</a> at <span>{this.formatDate()} </span>
                             </p>
                         </div>
 
