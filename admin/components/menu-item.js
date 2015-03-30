@@ -36,8 +36,9 @@ export default class MenuItem extends React.Component {
         }
         
         let selectedClass = selected ? 'page-item page-item-unread' : 'page-item bucket-of-nope'
+        let iconClass = this.props.setting.name.toLowerCase();
         return (
-        <li className="menu-item"><a href="#" onClick={this.selectItem} className="menu-link">{this.props.setting.name}</a></li>
+        <li className="menu-item"><a href="#" onClick={this.selectItem} className="menu-link"><span className={iconClass}> </span> {this.props.setting.name}</a></li>
         );
     }
 }
