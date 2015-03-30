@@ -4,6 +4,7 @@
 @import "./modules/vars";
 @import "./modules/utilities";
 @import "./modules/buttons";
+@import "./modules/controls";
 
 body {
     color: var(--color-dark);
