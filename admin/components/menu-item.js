@@ -16,7 +16,7 @@ export default class MenuItem extends React.Component {
     }
     selectItem(e) {
         console.log('select ' +this.props.page);
-        this.setState({isSelected:true});
+        this.setState({isSelected: true});
         ActionCreators.settingSelected(this.props.setting);
     }
     componentDidMount () { 
@@ -35,10 +35,10 @@ export default class MenuItem extends React.Component {
             selected = true;
         }
         
-        let selectedClass = selected ? 'page-item page-item-unread' : 'page-item bucket-of-nope'
+        let menuItem = selected ? 'menu-item menu-item-selected' : 'menu-item'
         let iconClass = 'pages-'+ this.props.setting.name.toLowerCase();
         return (
-        <li className="menu-item">
+        <li className={menuItem}>
             <a href="#" onClick={this.selectItem} className="menu-link">
                 <span className={iconClass} >   </span>
                 {this.props.setting.name}
