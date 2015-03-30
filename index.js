@@ -5,6 +5,7 @@ var exposeData = function exposeXMSData (req, res, next) {
 var cms = require('./lib/cms');
 var loader = require('./lib/seed');
 exports.handle = cms.handler;
+
 exports.extend = function (app) {
     loader(function () {
         var pages = require('mongo-start')('pages');
