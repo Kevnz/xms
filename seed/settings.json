@@ -1,6 +1,6 @@
 [
-    {"name": "Published"},
-    {"name": "Queue"},
-    {"name": "Draft"},
-    {"name": "Deleted"}
+    { "name": "Published", "count": 5},
+    { "name": "Queue", "count": 1},
+    { "name": "Draft", "count": 1},
+    { "name": "Deleted", "count": 0}
 ]
