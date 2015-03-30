@@ -1,0 +1,24 @@
+.pages-icon {
+	inherit:.padding-5;
+	inherit:.margin-10;
+}
+.pages-deleted {
+	inherit:.pages-icon;
+	inherit:.fa;
+	inherit:.fa-trash-o;
+}
+.pages-draft {
+	inherit:.pages-icon;
+	inherit:.fa;
+	inherit:.fa-clock-o;
+}
+.pages-queued {
+	inherit:.pages-icon;
+	inherit:.fa;
+	inherit:.fa-clock-o;
+}
+.pages-published {
+	inherit:.pages-icon;
+	inherit:.fa;
+	inherit:.fa-text-o;
+}
