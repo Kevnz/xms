@@ -4,8 +4,6 @@ var format = require("string-template")
 var AdminApp = require('../admin/components/admin-app');
 var el = document.getElementById('container');
 
-
-
 var api = require('./utils/api');
 
 api.getAllPages();
