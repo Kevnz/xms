@@ -375,7 +375,7 @@ var MenuItem = (function (_React$Component) {
                 }
 
                 var selectedClass = selected ? "page-item page-item-unread" : "page-item bucket-of-nope";
-                var iconClass = this.props.setting.name.toLowerCase();
+                var iconClass = "pages-" + this.props.setting.name.toLowerCase();
                 return React.createElement(
                     "li",
                     { className: "menu-item" },
@@ -385,9 +385,8 @@ var MenuItem = (function (_React$Component) {
                         React.createElement(
                             "span",
                             { className: iconClass },
-                            " "
+                            "   "
                         ),
-                        " ",
                         this.props.setting.name
                     )
                 );

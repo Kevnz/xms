@@ -1948,6 +1948,10 @@ striping:
 }
 
 .fa,
+.pages-deleted,
+.pages-draft,
+.pages-queue,
+.pages-published,
 .avatar-unknown {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -2218,7 +2222,8 @@ striping:
   content: "\f013";
 }
 
-.fa-trash-o:before {
+.fa-trash-o:before,
+.pages-deleted:before {
   content: "\f014";
 }
 
@@ -2226,11 +2231,13 @@ striping:
   content: "\f015";
 }
 
-.fa-file-o:before {
+.fa-file-o:before,
+.pages-draft:before {
   content: "\f016";
 }
 
-.fa-clock-o:before {
+.fa-clock-o:before,
+.pages-queue:before {
   content: "\f017";
 }
 
@@ -3043,7 +3050,8 @@ striping:
   content: "\f0f5";
 }
 
-.fa-file-text-o:before {
+.fa-file-text-o:before,
+.pages-published:before {
   content: "\f0f6";
 }
 
@@ -4347,6 +4355,14 @@ striping:
 
 .warning-button {
   margin: 1em 0;
+}
+
+.pages-icon,
+.pages-deleted,
+.pages-draft,
+.pages-queue,
+.pages-published {
+  padding-right: 8px;
 }
 
 body {
