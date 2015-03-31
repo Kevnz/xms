@@ -13,6 +13,7 @@ var gulp = require('gulp'),
   reworkNPM = require('rework-npm'),
   plumber = require('gulp-plumber'),
   watch = require('gulp-watch'),
+  mocha = require('gulp-mocha'),
   media = require('rework-custom-media');
  
 gulp.task('watch', function() {
@@ -79,6 +80,9 @@ gulp.task('buildjs', function () {
             console.log('ended');
         });
 });
- 
- gulp.task('build', ['buildjs', 'buildcss']);
+gulp.task('test', function () {
+return gulp.src('./test/api/index.js', {read: false})
+        .pipe(mocha({reporter: 'spec'}));
+});
+gulp.task('build', ['buildjs', 'buildcss']);
 gulp.task('default', [ 'build' ]);
