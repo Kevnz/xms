@@ -34,15 +34,20 @@ var ActionsCreators = (function () {
     }
 
     _createClass(ActionsCreators, {
-        pageUpdated: {
-            value: function pageUpdated(page) {
-                this.dispatch(page._id);
-                //api.updatePage(page);
+        savePage: {
+            value: function savePage(page) {
+                this.dispatch(page);
+                api.savePage(page);
+            }
+        },
+        pageSaved: {
+            value: function pageSaved(page) {
+                this.dispatch(page);
             }
         },
         settingSelected: {
             value: function settingSelected(setting) {
-                console.log(setting);
+                this.dispatch(setting.name.toLowerCase());
                 api.getPagesByStatus(setting.name.toLowerCase());
             }
         }
@@ -215,6 +220,8 @@ var ContentEditable = _interopRequire(require("react-wysiwyg"));
 
 var daylight = _interopRequire(require("daylight"));
 
+var ActionCreator = _interopRequire(require("../actions/action-creators"));
+
 var Main = (function (_React$Component) {
     function Main(props) {
         _classCallCheck(this, Main);
@@ -240,14 +247,15 @@ var Main = (function (_React$Component) {
     _createClass(Main, {
         _savePage: {
             value: function _savePage() {
+                console.log("SAVEd");
                 var title = this.refs.title.getDOMNode().innerHTML;
                 var content = this.refs.pageContent.getDOMNode().innerHTML;
+                var page = this.props.page;
+                page.title = title;
+                page.content = content;
 
-                var page = {
-                    title: title,
-                    content: content
-                };
                 console.log(page);
+                ActionCreator.savePage(page);
             }
         },
         _publishPage: {
@@ -382,7 +390,7 @@ module.exports = Main;
 // This gives you increased flexibility.
 //this.setState({ 'page.content': text });
 
-},{"./menu":8,"daylight":23,"react":186,"react-wysiwyg":26}],7:[function(require,module,exports){
+},{"../actions/action-creators":2,"./menu":8,"daylight":23,"react":186,"react-wysiwyg":26}],7:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -845,6 +853,15 @@ module.exports = {
             console.log("receivePages");
             console.log(res);
             ActionCreators.receivePages(res.body);
+        });
+    },
+    savePage: function savePage(page) {
+        console.log("savePage");
+        var url = !page._id ? PAGES_URI : PAGES_URI + "/" + page._id;
+        console.log(url);
+        request.post(url).end(function (err, res) {
+            console.log(res);
+            ActionCreators.pageSaved(res.body);
         });
     },
     getAllSettings: function getAllSettings() {
