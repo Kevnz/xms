@@ -3,6 +3,7 @@ import React from 'react';
 import Menu from './menu';
 import ContentEditable from 'react-wysiwyg';
 import daylight from 'daylight';
+import ActionCreator from '../actions/action-creators';
 
 class Main extends React.Component {
     constructor(props) {
@@ -22,14 +23,15 @@ class Main extends React.Component {
         this.renderControls = this.renderControls.bind(this);
     }
     _savePage() {
+        console.log('SAVEd');
         var title = this.refs.title.getDOMNode().innerHTML;
         var content = this.refs.pageContent.getDOMNode().innerHTML;
+        let page = this.props.page;
+        page.title = title;
+        page.content = content;
 
-        var page ={
-            title,
-            content
-        };
         console.log(page);
+        ActionCreator.savePage(page);
     }
     _publishPage() {
 
