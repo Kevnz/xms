@@ -13,9 +13,12 @@ class ActionsCreators {
             'receiveSettings'
             );
     }
-    pageUpdated(page) {
-        this.dispatch(page._id);
-        //api.updatePage(page);
+    savePage(page) {
+        this.dispatch(page);
+        api.savePage(page);
+    }
+    pageSaved(page) {
+        this.dispatch(page);
     }
     settingSelected (setting) {
         this.dispatch(setting.name.toLowerCase());
