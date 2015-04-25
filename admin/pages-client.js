@@ -1,9 +1,10 @@
+'use strict';
 import agent from 'superagent';
 import format from 'string-template';
 
-const PAGES_URI = '/xms/api/pages';
+const PAGES_URI = '/xms/api/pages/published';
 const PAGE_URI = '/xms/api/pages/{id}';
-const PUBLISHED_PAGES_URI = '/xms/api/pages/published';
+const PUBLISHED_PAGES_URI = '/xms/api/pages/';
 const DRAFT_PAGES_URI = '/xms/api/pages/draft';
 const QUEUED_PAGES_URI = '/xms/api/pages/queued';
 const DELETED_PAGES_URI = '/xms/api/pages/deleted';
