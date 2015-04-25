@@ -1,3 +1,4 @@
+'use strict';
 import request from 'superagent';
 import ActionCreators from '../actions/action-creators';
 
@@ -10,16 +11,22 @@ const DELETED_PAGES_URI = '/xms/api/pages/deleted';
 
 export default {
     getAllPages: function () {
-        request.get('/xms/api/pages')
+        request.get(PUBLISHED_PAGES_URI)
             .end((err, res) => {
                 console.log('receivePages');
                 console.log(res);
                 ActionCreators.receivePages(res.body);
             });
     },
-    getPagesByStatus:function (status) {
+    getPagesByStatus: function (status) {
 
-    }
+        request.get(PAGES_URI + '/' + status)
+            .end((err, res) => {
+                console.log('receivePages');
+                console.log(res);
+                ActionCreators.receivePages(res.body);
+            });
+    },
     getAllSettings: function () {
         request.get('/xms/api/settings')
             .end((err, res) => { 
