@@ -27,6 +27,16 @@ export default {
                 ActionCreators.receivePages(res.body);
             });
     },
+    savePage: function (page) {
+        console.log('savePage');
+        let url = !page._id ? PAGES_URI : PAGES_URI + '/' + page._id;
+        console.log(url);
+        request.post(url)
+            .end((err, res) => {
+                console.log(res);
+                ActionCreators.pageSaved(res.body);
+            });
+    },
     getAllSettings: function () {
         request.get('/xms/api/settings')
             .end((err, res) => { 
