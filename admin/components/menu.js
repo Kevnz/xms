@@ -1,5 +1,6 @@
+'use strict';
 import React from 'react';
-import ListenerMixin from 'alt/mixins/ListenerMixin'
+import ListenerMixin from 'alt/mixins/ListenerMixin';
 import mixin from 'react-mixin';
 import SettingsStore from '../stores/settings-store';
 import MenuItem from './menu-item';
@@ -12,12 +13,16 @@ class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {settings: props.settings};
-        console.log('menu state', this.state);       
+        console.log('menu state', this.state);  
+        this._composeClicked = this._composeClicked.bind(this);     
         //this.onChange = this.onChange.bind(this);
     }
     componentDidMount () { 
         this.listenTo(SettingsStore, this._onChange.bind(this));
     } 
+    _composeClicked() {
+        
+    }
     _onChange () {
 
         this.setState(getStateFromStores().settings);
@@ -39,7 +44,7 @@ class Menu extends React.Component {
                 <a href="#" className="menu-button">Menu</a>
 
                 <div className="nav-inner">
-                    <button className="compose-button">Compose</button>
+                    <button className="compose-button" onClick={this._composeClicked}>Compose</button>
 
                     <div className="inner-menu">
                         <ul className="menu-list">
