@@ -26,9 +26,6 @@ export default class MenuItem extends React.Component {
 
         this.setState(getStateFromStores(this.props.setting._id));
     }
-    selectItem () {
-
-    }
     render() {
         let selected = this.props.isSelected ;
         if (this.state && this.state.isSelected) {
