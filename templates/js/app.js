@@ -18,11 +18,42 @@ React.render(React.createElement(AdminApp, null), el);
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
 var alt = _interopRequire(require("../alt"));
 
-module.exports = alt.generateActions("receivePages", "editPage", "addPage", "removePage", "pageSelected", "receiveSettings");
+var api = _interopRequire(require("../utils/api"));
 
-},{"../alt":3}],3:[function(require,module,exports){
+var ActionsCreators = (function () {
+    function ActionsCreators() {
+        _classCallCheck(this, ActionsCreators);
+
+        this.generateActions("receivePages", "editPage", "addPage", "removePage", "pageSelected", "receiveSettings");
+    }
+
+    _createClass(ActionsCreators, {
+        pageUpdated: {
+            value: function pageUpdated(page) {
+                this.dispatch(page._id);
+                //api.updatePage(page);
+            }
+        },
+        settingSelected: {
+            value: function settingSelected(setting) {
+                console.log(setting);
+                api.getPagesByStatus(setting.name.toLowerCase());
+            }
+        }
+    });
+
+    return ActionsCreators;
+})();
+
+alt.createActions(ActionsCreators, exports);
+
+},{"../alt":3,"../utils/api":12}],3:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -190,28 +221,54 @@ var Main = (function (_React$Component) {
 
         _get(Object.getPrototypeOf(Main.prototype), "constructor", this).call(this, props);
         console.log(props);
+
         this.state = { page: { title: props.title, content: props.content }, editing: props.editing };
         console.log(this.state);
+
         this.enableEditing = this.enableEditing.bind(this);
+        this.disableEditing = this.disableEditing.bind(this);
         this.onChange = this.onChange.bind(this);
+        this._publishPage = this._publishPage.bind(this);
+        this._savePage = this._savePage.bind(this);
+        this._deletePage = this._deletePage.bind(this);
+
         this.renderControls = this.renderControls.bind(this);
     }
 
     _inherits(Main, _React$Component);
 
     _createClass(Main, {
-        onChange: {
-            value: function onChange(text) {
-                // in order to render the updated text,
-                // you need to pass it as a prop to contentEditable.
-                // This gives you increased flexibility.
-                this.setState({ text: text });
+        _savePage: {
+            value: function _savePage() {
+                var title = this.refs.title.getDOMNode().innerHTML;
+                var content = this.refs.pageContent.getDOMNode().innerHTML;
+
+                var page = {
+                    title: title,
+                    content: content
+                };
+                console.log(page);
             }
+        },
+        _publishPage: {
+            value: function _publishPage() {}
+        },
+        _deletePage: {
+            value: function _deletePage() {}
+        },
+        onChange: {
+            value: function onChange(text) {}
         },
         enableEditing: {
             value: function enableEditing() {
                 // set your contenteditable field into editing mode.
                 this.setState({ editing: true });
+            }
+        },
+        disableEditing: {
+            value: function disableEditing() {
+                // set your contenteditable field into editing mode.
+                this.setState({ editing: false });
             }
         },
         renderControls: {
@@ -226,7 +283,7 @@ var Main = (function (_React$Component) {
                     { className: "actions" },
                     React.createElement(
                         "div",
-                        { className: "warning-button" },
+                        { className: "warning-button", onClick: this.disableEditing },
                         "Cancel Edit"
                     )
                 );
@@ -257,8 +314,7 @@ var Main = (function (_React$Component) {
                                 { className: "page-content-header-wrapper" },
                                 React.createElement(
                                     "h1",
-                                    { className: "page-content-title" },
-                                    " ",
+                                    { className: "page-content-title", contentEditable: this.state.editing, ref: "title" },
                                     this.props.page.title
                                 ),
                                 React.createElement(
@@ -284,17 +340,17 @@ var Main = (function (_React$Component) {
                                 { className: "page-content-controls" },
                                 React.createElement(
                                     "button",
-                                    { className: "secondary-button" },
+                                    { className: "secondary-button", onClick: this._savePage },
                                     "Save"
                                 ),
                                 React.createElement(
                                     "button",
-                                    { className: "secondary-button" },
+                                    { className: "secondary-button", onClick: this._publishPage },
                                     "Publish"
                                 ),
                                 React.createElement(
                                     "button",
-                                    { className: "secondary-button" },
+                                    { className: "secondary-button", onClick: this._deletePage },
                                     "Delete"
                                 )
                             )
@@ -302,16 +358,11 @@ var Main = (function (_React$Component) {
                         React.createElement(
                             "div",
                             { className: "page-content-body" },
-                            React.createElement(ContentEditable, {
-                                tagName: "div",
-                                className: "name-field",
-                                onChange: this.onChange,
-                                text: this.props.page.content,
-                                placeholder: "Your Content",
-                                autofocus: true,
-                                maxLength: 1000,
-                                editing: this.state.editing
-                            }),
+                            React.createElement(
+                                "div",
+                                { contentEditable: this.state.editing, ref: "pageContent" },
+                                this.props.page.content
+                            ),
                             this.renderControls()
                         )
                     )
@@ -325,6 +376,11 @@ var Main = (function (_React$Component) {
 
 Main.defaultProps = { page: { title: "", content: "" }, editing: false };
 module.exports = Main;
+
+// in order to render the updated text,
+// you need to pass it as a prop to contentEditable.
+// This gives you increased flexibility.
+//this.setState({ 'page.content': text });
 
 },{"./menu":8,"daylight":23,"react":186,"react-wysiwyg":26}],7:[function(require,module,exports){
 "use strict";
@@ -366,7 +422,11 @@ var MenuItem = (function (_React$Component) {
 
     _createClass(MenuItem, {
         selectItem: {
-            value: function selectItem() {}
+            value: function selectItem(e) {
+                console.log("select " + this.props.page);
+                this.setState({ isSelected: true });
+                ActionCreators.settingSelected(this.props.setting);
+            }
         },
         componentDidMount: {
             value: function componentDidMount() {
@@ -450,6 +510,7 @@ var Menu = (function (_React$Component) {
         _get(Object.getPrototypeOf(Menu.prototype), "constructor", this).call(this, props);
         this.state = { settings: props.settings };
         console.log("menu state", this.state);
+        this._composeClicked = this._composeClicked.bind(this);
         //this.onChange = this.onChange.bind(this);
     }
 
@@ -460,6 +521,9 @@ var Menu = (function (_React$Component) {
             value: function componentDidMount() {
                 this.listenTo(SettingsStore, this._onChange.bind(this));
             }
+        },
+        _composeClicked: {
+            value: function _composeClicked() {}
         },
         _onChange: {
             value: function _onChange() {
@@ -493,7 +557,7 @@ var Menu = (function (_React$Component) {
                         { className: "nav-inner" },
                         React.createElement(
                             "button",
-                            { className: "compose-button" },
+                            { className: "compose-button", onClick: this._composeClicked },
                             "Compose"
                         ),
                         React.createElement(
@@ -760,9 +824,24 @@ var request = _interopRequire(require("superagent"));
 
 var ActionCreators = _interopRequire(require("../actions/action-creators"));
 
+var PAGES_URI = "/xms/api/pages";
+var PAGE_URI = "/xms/api/pages/{id}";
+var PUBLISHED_PAGES_URI = "/xms/api/pages/published";
+var DRAFT_PAGES_URI = "/xms/api/pages/draft";
+var QUEUED_PAGES_URI = "/xms/api/pages/queued";
+var DELETED_PAGES_URI = "/xms/api/pages/deleted";
+
 module.exports = {
     getAllPages: function getAllPages() {
-        request.get("/xms/api/pages").end(function (err, res) {
+        request.get(PUBLISHED_PAGES_URI).end(function (err, res) {
+            console.log("receivePages");
+            console.log(res);
+            ActionCreators.receivePages(res.body);
+        });
+    },
+    getPagesByStatus: function getPagesByStatus(status) {
+
+        request.get(PAGES_URI + "/" + status).end(function (err, res) {
             console.log("receivePages");
             console.log(res);
             ActionCreators.receivePages(res.body);
