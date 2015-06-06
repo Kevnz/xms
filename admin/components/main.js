@@ -8,10 +8,10 @@ import ActionCreator from '../actions/action-creators';
 class Main extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
+        console.log('main props', props);
 
-        this.state= { page:{title:props.title, content:props.content }, editing: props.editing};
-        console.log(this.state);
+        this.state = { page: {title:props.title, content:props.content }, editing: props.editing};
+        console.log('main state', this.state);
 
         this.enableEditing = this.enableEditing.bind(this);
         this.disableEditing = this.disableEditing.bind(this);    
@@ -21,6 +21,8 @@ class Main extends React.Component {
         this._deletePage = this._deletePage.bind(this);
 
         this.renderControls = this.renderControls.bind(this);
+
+        console.log(props.page._id);
     }
     _savePage() {
         console.log('SAVEd');
@@ -55,8 +57,8 @@ class Main extends React.Component {
         this.setState({ editing: false });
     }
     renderControls() {
-
-        return (!this.state.editing) 
+        console.log('renderControls ', this.props.page.edit || !this.state.editing);
+        return (!this.isEdit()
             ?   <div className="primary-button" onClick={this.enableEditing}>
                     Enable Editing
                 </div>
@@ -65,8 +67,15 @@ class Main extends React.Component {
                     <div className="warning-button" onClick={this.disableEditing}>
                         Cancel Edit
                     </div>
-                </div>;
+                </div>);
  
+
+    }
+    isEdit(){
+        if(this.props.page.edit) {
+            return this.props.page.edit;
+        }
+        return this.state.editing;
 
     }
     formatDate(){
@@ -80,7 +89,8 @@ class Main extends React.Component {
                 <div className="page-content">
                     <div className="page-content-header ">
                         <div className="page-content-header-wrapper">
-                            <h1 className="page-content-title" contentEditable={this.state.editing} ref="title">{this.props.page.title}</h1>                            
+                            <h1 className="page-content-title" contentEditable={this.isEdit()} ref="title">{this.props.page.title}</h1>
+                            <h3 className="page-content-subtitle" contentEditable={this.isEdit()} ref="title">{this.props.page.subtitle}</h3>
                             <p className="page-content-subtitle">
                                 From  <a href="">{this.props.page.createdBy}</a> at <span>{this.formatDate()} </span>
                             </p>
@@ -94,12 +104,22 @@ class Main extends React.Component {
                     </div>
 
                     <div className="page-content-body" >
-                        <div contentEditable={this.state.editing} ref="pageContent">
+
+                        <h4>Intro</h4>
+                        <div contentEditable={this.isEdit()} ref="pageIntro" className="page-content-body-inner">
+                            {this.props.page.intro}
+                        </div>
+                        <hr />
+                        <h4>Description</h4>
+                        <div contentEditable={this.isEdit()} ref="pageDescription" className="page-content-body-inner">
+                            {this.props.page.description}
+                        </div>
+                        <hr />
+                        <h4>Main Content</h4>
+                        <div contentEditable={this.isEdit()} ref="pageContent" className="page-content-body-inner-main">
                             {this.props.page.content}
                         </div>
                         {this.renderControls()}
- 
-
                     </div>
                 </div>
             </div>
