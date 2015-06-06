@@ -29,9 +29,12 @@ export default {
     },
     savePage: function (page) {
         console.log('savePage');
-        let url = !page._id ? PAGES_URI : PAGES_URI + '/' + page._id;
+        console.log(page);
+
+        let url = page._id === 'new' ? PAGES_URI : PAGES_URI + '/' + page._id;
         console.log(url);
         request.post(url)
+            .send(page)
             .end((err, res) => {
                 console.log(res);
                 ActionCreators.pageSaved(res.body);
