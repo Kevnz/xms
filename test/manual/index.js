@@ -14,8 +14,11 @@ app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir:__dirname + '
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 app.locals.pretty = true;
- 
- 
+
+
+app.use(require('connect-livereload')({
+    port: 35728
+}));
 
 var xms = require('../../index');
 
