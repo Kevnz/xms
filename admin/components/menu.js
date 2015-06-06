@@ -4,6 +4,7 @@ import ListenerMixin from 'alt/mixins/ListenerMixin';
 import mixin from 'react-mixin';
 import SettingsStore from '../stores/settings-store';
 import MenuItem from './menu-item';
+import ActionCreators from '../actions/action-creators';
 
 function getStateFromStores() {
     return {settings: SettingsStore.getState()};
@@ -21,7 +22,8 @@ class Menu extends React.Component {
         this.listenTo(SettingsStore, this._onChange.bind(this));
     } 
     _composeClicked() {
-        
+        console.log('composeclicked');
+        ActionCreators.composeSelected();
     }
     _onChange () {
 
