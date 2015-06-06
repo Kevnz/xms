@@ -78,7 +78,20 @@ a {
     inherit:.pure-u-1;
 
 }
+.error {
+    inherit: .pure-alert;
+    inherit: .pure-alert-error;
+}
 
+.success {
+    inherit: .pure-alert;
+    inherit: .pure-alert-success;
+}
+
+.warning {
+    inherit: .pure-alert;
+    inherit: .pure-alert-warning;
+}
 
 @media (--medium-screen) {
     .app {

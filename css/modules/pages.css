@@ -65,6 +65,10 @@
 .page-content-title {
     margin: 0.5em 0 0;
 }
+.page-content-title[contenteditable="true"] {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
 .page-content-subtitle {
     font-size: 1em;
     margin: 0;
@@ -93,4 +97,33 @@
 }
 .page-content-header-wrapper {
     inherit:.pure-u-1-2;
+}
+
+.page-content-body-inner[contenteditable="true"] {
+    border: 1px solid #ccc;
+    padding: 5px;
+    min-height: 150px;
+}
+.page-content-body-inner-main[contenteditable="true"] {
+    border: 1px solid #ccc;
+    padding: 5px;
+    min-height: 250px!important;
+}
+
+
+.example-enter {
+    opacity: 0.01;
+    transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+    opacity: 1;
+}
+.example-leave {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
 }
