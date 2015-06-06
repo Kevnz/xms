@@ -10,7 +10,8 @@ class ActionsCreators {
             'addPage',
             'removePage',
             'pageSelected',
-            'receiveSettings'
+            'receiveSettings',
+            'composeSelected'
             );
     }
     savePage(page) {
