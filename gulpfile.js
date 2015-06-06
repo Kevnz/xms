@@ -14,11 +14,12 @@ var gulp = require('gulp'),
   plumber = require('gulp-plumber'),
   watch = require('gulp-watch'),
   mocha = require('gulp-mocha'),
+    livereload = require('gulp-livereload'),
   media = require('rework-custom-media');
  
 gulp.task('watch', function() {
     //var server = plugins.livereload();
-
+    livereload.listen({port:35728});
     watch('./admin/**/*.*' , function(file) {
         gulp.start('buildjs');
         //server.changed(file.path);
@@ -55,7 +56,8 @@ gulp.task('buildcss', function () {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('templates/css/'));
+        .pipe(gulp.dest('templates/css/'))
+        .pipe(livereload());
 });
 
 gulp.task('buildjs', function () {
@@ -75,7 +77,8 @@ gulp.task('buildjs', function () {
             //throw e;
         })
         .pipe(source('app.js'))
-        .pipe(gulp.dest('./templates/js')) 
+        .pipe(gulp.dest('./templates/js'))
+        .pipe(livereload())
         .on('end', function () {
             console.log('ended');
         });
