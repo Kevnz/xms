@@ -5,7 +5,7 @@ var express = require('express'),
     app = express(),
     expstate = require('express-state');
 
-console.log(__dirname);
+
 expstate.extend(app);
 
 app.set('port', process.env.PORT || 3125);
@@ -21,7 +21,6 @@ app.use(require('connect-livereload')({
 }));
 
 var xms = require('../../index');
-
 xms.extend(app);
 
 app.get('/render', xms.handle, function(req, res, next){
