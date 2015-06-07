@@ -4,6 +4,7 @@ import Menu from './menu';
 import ContentEditable from 'react-wysiwyg';
 import daylight from 'daylight';
 import ActionCreator from '../actions/action-creators';
+import Forms from 'react-form-elements';
 
 class Main extends React.Component {
     constructor(props) {
@@ -84,6 +85,7 @@ class Main extends React.Component {
         } else { return "";}
     }
     render() {
+
         return (
             <div className="main">
                 <div className="page-content">
@@ -94,6 +96,7 @@ class Main extends React.Component {
                             <p className="page-content-subtitle">
                                 From  <a href="">{this.props.page.createdBy}</a> at <span>{this.formatDate()} </span>
                             </p>
+
                         </div>
 
                         <div className="page-content-controls">
@@ -103,7 +106,7 @@ class Main extends React.Component {
                         </div>
                     </div>
 
-                    <div className="page-content-body" >
+                    <div className="page-content-body">
 
                         <h4>Intro</h4>
                         <div contentEditable={this.isEdit()} ref="pageIntro" className="page-content-body-inner">

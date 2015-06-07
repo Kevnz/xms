@@ -21,14 +21,13 @@ exports.extend = function (app) {
                     docs[i].createdOn = co;
                     pages.save(docs[i]);
                 } else {
-                                        let co = new Date(docs[i].createdOn);
+                     let co = new Date(docs[i].createdOn);
                     docs[i].createdOn = co;
                     pages.save(docs[i]);
                 }
-            };
+            }
         })
     });
-    
     app.use(cms.handler);
     //get admin features and bolt them onto the app
     require('./lib/admin')(app);

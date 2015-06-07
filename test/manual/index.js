@@ -22,9 +22,7 @@ app.use(require('connect-livereload')({
 
 var xms = require('../../index');
 
-console.dir(xms);
 xms.extend(app);
-
 
 app.get('/render', xms.handle, function(req, res, next){
     console.dir(app);

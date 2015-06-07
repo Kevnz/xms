@@ -9,7 +9,8 @@
         "createdOn": "3/28/2015 9:21:09 AM",
         "publishOn": "3/28/2015 9:21:09 AM",
         "editedBy": null,
-        "editedOn": null
+        "editedOn": null,
+        "route": "/"
     },
     {
         "title": "Second Page",
@@ -21,7 +22,8 @@
         "createdOn": "3/28/2015 9:22:09 AM",
         "publishOn": "3/28/2015 9:22:09 AM",
         "editedBy": null,
-        "editedOn": null
+        "editedOn": null,
+        "route": "/2"
     },
     {
         "title": "Third Page",
@@ -33,7 +35,8 @@
         "createdOn": "3/28/2015 9:23:09 AM",
         "publishOn": "3/28/2015 9:23:09 AM",
         "editedBy": null,
-        "editedOn": null
+        "editedOn": null,
+        "route": "/3"
     },
     {
         "title": "Fourth Page",
@@ -45,7 +48,8 @@
         "createdOn": "3/28/2015 9:24:09 AM",
         "publishOn": "3/28/2015 9:24:09 AM",
         "editedBy": null,
-        "editedOn": null
+        "editedOn": null,
+        "route": "/4"
     },
     {
         "title": "Fifth Page",
@@ -57,7 +61,8 @@
         "createdOn": "3/28/2015 9:25:09 AM",
         "publishOn": "3/28/2015 9:25:09 AM",
         "editedBy": null,
-        "editedOn": null
+        "editedOn": null,
+        "route": "/5"
     },
     {
         "title": "Unpublished Page",
@@ -69,7 +74,8 @@
         "createdOn": "3/28/2015 9:33:09 AM", 
         "publishOn": null,
         "editedBy": null,
-        "editedOn": null
+        "editedOn": null,
+        "route": "/un"
     },
     {
         "title": "Queued Page",
@@ -81,6 +87,7 @@
         "createdOn": "3/28/2015 9:23:09 AM",
         "publishOn": "6/10/2015 9:23:09 AM",
         "editedBy": null,
-        "editedOn": null
+        "editedOn": null,
+        "route": "/queued"
     }
 ]
