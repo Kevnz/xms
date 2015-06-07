@@ -4,7 +4,8 @@ import Menu from './menu';
 import ContentEditable from 'react-wysiwyg';
 import daylight from 'daylight';
 import ActionCreator from '../actions/action-creators';
-import Forms from 'react-form-elements';
+import { TextBox } from 'react-form-elements';
+
 
 class Main extends React.Component {
     constructor(props) {
@@ -29,10 +30,14 @@ class Main extends React.Component {
         console.log('SAVEd');
         var title = this.refs.title.getDOMNode().innerHTML;
         var content = this.refs.pageContent.getDOMNode().innerHTML;
+        let subtitle = this.refs.subtitle.getDOMNode().innerHTML;
         let page = this.props.page;
         page.title = title;
         page.content = content;
-
+        page.route = this.refs.route.getValue();
+        page.subtitle = this.refs.subtitle.getDOMNode().innerHTML;
+        page.intro = this.refs.intro.getDOMNode().innerHTML;
+        page.description = this.refs.description.getDOMNode().innerHTML;
         console.log(page);
         ActionCreator.savePage(page);
     }
@@ -96,7 +101,7 @@ class Main extends React.Component {
                             <p className="page-content-subtitle">
                                 From  <a href="">{this.props.page.createdBy}</a> at <span>{this.formatDate()} </span>
                             </p>
-
+                            <TextBox placeholder="/someroute/test" value={this.props.page.route} ref="route" />
                         </div>
 
                         <div className="page-content-controls">
@@ -130,5 +135,5 @@ class Main extends React.Component {
     }
 }
 
-Main.defaultProps = { page: {title:'', content:''}, editing: false}
+Main.defaultProps = { page: {title:'', content:'', subtitle: '', intro:'', route:'', description: '', createdBy:'', createdOn: new Date()}, editing: false}
 export default Main;
