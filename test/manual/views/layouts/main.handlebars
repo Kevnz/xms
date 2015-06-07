@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
 
-    <title>{{title}}</title>
+    <title>{{xms.title}}</title>
     <meta name="description" content="" />
     <meta name="author" content="" />
 
@@ -20,20 +20,10 @@
         <div class="sidebar pure-u">
             <header class="header">
                 <hgroup>
-                    <h1 class="brand-title">NZ News</h1>
-                    <h2 class="brand-tagline">News headlines from across New Zealand</h2>
+                    <h1 class="brand-title">{{xms.title}}</h1>
+                    <h2 class="brand-tagline">{{xms.subtitle}}</h2>
                 </hgroup>
-
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a class="pure-button" href="http://purecss.io">Pure</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="pure-button" href="http://yuilibrary.com">YUI Library</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div>{{xms.intro}}</div>
             </header>
         </div>
 
@@ -41,15 +31,7 @@
             <div class="content">
                 {{{body}}}
 
-                <footer class="footer">
-                    <div class="pure-menu pure-menu-horizontal pure-menu-open">
-                        <ul>
-                            <li><a href="/about">About</a></li>
-                            <li><a href="http://twitter.com/">Twitter</a></li>
-                            <li><a href="http://facebook.com/">Facebook</a></li>
-                        </ul>
-                    </div>
-                </footer>
+
             </div>
         </div>
     </div>
