@@ -1,0 +1,22 @@
+{
+  "test": "jest",
+  "predev": [
+    "docker-compose -f ./docker/docker-compose.yml up --detach",
+    "node ./scripts/delay.js"
+  ],
+  "dev": [
+    "nodemon ./working/server.js",
+    "webpack-dev-server --config ./webpack/webpack.config.js --mode development"
+  ],
+  "cleanupdev": [
+    "docker-compose -f ./docker/docker-compose.yml down"
+  ],
+  "postdev": [
+    "docker-compose -f ./docker/docker-compose.yml down"
+  ],
+  "prod": "webpack-dev-server --config ./webpack/webpack.config.js --mode production",
+  "build:working": "webpack --config ./webpack/webpack.config.js --mode production",
+  "build:examples": "webpack --config ./webpack/examples.config.js --mode production",
+  "build": "webpack --config ./webpack/webpack.config.publish.js --mode production",
+  "build:dev": "webpack --config ./webpack/webpack.config.publish.js --mode development"
+}
