@@ -38,7 +38,7 @@
     "@babel/preset-react": "^7.0.0",
     "@brightleaf/elements": "^0.17.1",
     "@brightleaf/react-hooks": "^1.1.1",
-    "@hapi/hapi": "^18.3.1",
+    "@hapi/hapi": "^19.1.1",
     "@kev_nz/eslint-config": "^4.0.0",
     "@reach/router": "^1.2.1",
     "@testing-library/jest-dom": "^4.0.0",
